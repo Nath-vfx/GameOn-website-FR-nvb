@@ -23,10 +23,13 @@ modalCloseBtn.addEventListener("click", closeModal)
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  if (modalbg.classList.contains("close-content")) {
+    modalbg.classList.remove("close-content")
+  }
 }
 
 function  closeModal() {
-  modalbg.style.display = "none";
+  modalbg.classList.add("close-content")
 }
 
 
