@@ -32,15 +32,77 @@ function  closeModal() {
   modalbg.classList.add("close-content")
 }
 
-function validateEmail() {
-  let emailID = document.reserve.email.value;
-  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-  if (!emailRegex.test(emailID)) {
-    alert("Le format de l'email est invalide")
+let x = document.forms["reserve"];
+
+//Fonction de validation du prénom de l'utilisateur
+function validateFirstname() {
+  if (x.first.value === "" || x.first.value.length < 2) {
+    //alert("Le prénom ne peut pas être vide");
+    document.getElementById('firstName').setAttribute("data-error-visible", "true")
     return false
+  }
+  else {
+    document.getElementById('firstName').setAttribute("data-error-visible", "false")
+    return true
   }
 }
 
+//Fonction de validation du nom de l'utilisateur
+function validateLastname() {
+  if (x.last.value === "" || x.last.value.length < 2) {
+    //alert("Le prénom ne peut pas être vide");
+    document.getElementById('lastName').setAttribute("data-error-visible", "true")
+    return false
+  }
+  else {
+    document.getElementById('lastName').setAttribute("data-error-visible", "false")
+    return true
+  }
+}
+
+//Function de validation du format de l'email de l'utilisateur
+function validateEmail() {
+  let emailID = x.email.value;
+  let target = document.getElementById("validEmail")
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if (!emailRegex.test(emailID)) {
+      //alert("Le format de l'email est invalide")
+      target.setAttribute("data-error-visible", "true")
+      target.setAttribute("data-error", "Veuillez renseigner un email valide")
+      return false
+    }
+    else {
+      target.setAttribute("data-error-visible", "false")
+      return true
+    }
+}
+
+//Fonction de validation de la date de naisssance de l'utilisateur
+function validateBirthdate() {
+  if (x.birthdate.value === "" || x.birthdate.value === null) {
+    document.querySelector("#validBirthdate").setAttribute("data-error-visible", "true")
+    return false
+  }
+  else {
+    document.querySelector("#validBirthdate").setAttribute("data-error-visible", "false")
+    return true
+  }
+}
+
+//Fonction de validation du nombre de tournoi auquel l'utilisateur à participé
+function validateTournamentNumber() {
+  let tournamentQuantity = document.querySelector("#validTournamentQuantity")
+  if (x.quantity.value === null || x.quantity.value === "") {
+    //alert("Une valeur (même 0) doit être inscrite")
+    tournamentQuantity.setAttribute("data-error-visible", "true")
+    return false
+  } else {
+    tournamentQuantity.setAttribute("data-error-visible", "false")
+    return true
+  }
+}
+
+//Fonction de validation de choix du lieu du prochain tournoi de notre choix
 function validateLocation() {
   let radioButtons = document.getElementsByName('location');
   let isSelectedButton = false;
@@ -48,68 +110,59 @@ function validateLocation() {
   for (let i = 0; i < radioButtons.length; i++) {
     if (radioButtons[i].checked) {
       isSelectedButton = true;
+      document.querySelector("#validLocation").setAttribute("data-error-visible","false")
       break;
     }
   }
 
   if(!isSelectedButton) {
-    alert("Veuillez sélectionner une ville");
+    document.querySelector("#validLocation").setAttribute("data-error-visible","true")
     return false;
+  } else {
+    return true
   }
 }
 
+//Function de validation des conditions d'utilisations
 function validateCheckbox() {
   let checkbox = document.getElementById('checkbox1')
+  let validCheckBox = document.querySelector("#validCheckBox")
   if (!checkbox.checked) {
-    alert("Pour continuer vous devez accepter les conditions d'utilisations")
+    validCheckBox.setAttribute("data-error-visible","true")
     return false
+  }
+  else {
+    validCheckBox.setAttribute("data-error-visible", "false")
+    return true
   }
 }
 
 function validateForm() {
-  let x = document.forms["reserve"];
+  //Validation du prénom
+  let firstnameIsValid = validateFirstname();
 
-  if (x.first.value === "") {
-    alert("Le prénom ne peut pas être vide");
-    return false
-  }
-  if (x.first.value.length < 2) {
-    alert("Le nombre minimum de caractère autorisé pour le prénom est de 2")
-    return false
-  }
-  if (x.last.value === "") {
-    alert("Le nom ne peut pas être vide");
-    return false
-  }
-  if (x.last.value.length < 2) {
-    alert("Le nombre minimum de caractère autorisé pour le nom est de 2")
-    return false
-  }
-  if (x.email.value === "") {
-    alert("L'email ne peut pas être vide")
-    return false
-  }
-  if (x.birthdate.value === null || x.birthdate.value === "") {
-    alert("La date de naissance ne peut être nulle" + x.birthdate.value);
-    return false
-  }
-  if (x.quantity.value === null || x.quantity.value === "") {
-    alert("Une valeur (même 0) doit être inscrite")
-    return false
-  }
-  if (x.location.value === null || x.quantity.value === "") {
-    alert("Veuillez choisir une ville");
-    return false
-  }
-  if (!validateEmail()) {
-    return false
-  }
-  if (!validateLocation()) {
+  //validation du nom
+  let lastnameIsValid = validateLastname();
+
+  //Validation du mail
+  let emailIsValid = validateEmail();
+
+  //Validation de la date de naissance
+  let birthdateIsValid = validateBirthdate();
+
+  //Validation du nombre de tournoi effectué
+  let tournamentNumberIsValid = validateTournamentNumber();
+
+  //validation du lieu
+  let locationIsValid = validateLocation();
+
+  //Validation des conditions d'utilisation
+  let checkboxIsValid = validateCheckbox();
+
+  // Vérifiez si toutes les fonctions renvoient true
+  if (firstnameIsValid && lastnameIsValid && emailIsValid && birthdateIsValid && tournamentNumberIsValid && locationIsValid && checkboxIsValid) {
+    return true;
+  } else {
     return false;
   }
-  if (!validateCheckbox()) {
-    return false
-  }
 }
-
-

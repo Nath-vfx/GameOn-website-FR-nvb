@@ -63,7 +63,11 @@
               onsubmit="return validate();"
             >
               <div
-                class="formData">
+                id="firstName"
+                class="formData"
+                data-error-visible="false"
+                data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom."
+                >
                 <label for="first">Prénom</label><br>
                 <input
                   class="text-control"
@@ -74,7 +78,11 @@
                 /><br>
               </div>
               <div
-                class="formData">
+                id="lastName"
+                class="formData"
+                data-error-visible="false"
+                data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom."
+                >
                 <label for="last">Nom</label><br>
                 <input
                   class="text-control"
@@ -84,7 +92,11 @@
                 /><br>
               </div>
               <div
-                class="formData">
+                id="validEmail"
+                class="formData"
+                data-error-visible="false"
+                data-error=""
+                >
                 <label for="email">E-mail</label><br>
                 <input
                   class="text-control"
@@ -94,24 +106,35 @@
                 /><br>
               </div>
               <div
-                class="formData">
+                id="validBirthdate"
+                class="formData"
+                data-error-visible="false"
+                data-error="Vous devez entrer votre date de naissance."
+                >
                 <label for="birthdate">Date de naissance</label><br>
                 <input
                   class="text-control"
                   type="date"
                   id="birthdate"
                   name="birthdate"
-
                 /><br>
               </div>
               <div
-                class="formData">
+                id="validTournamentQuantity"
+                class="formData"
+                data-error-visible="false"
+                data-error="Vous devez séléctionner un nombre même 0"
+                >
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
-                class="formData">
+                id="validLocation"
+                class="formData"
+                data-error-visible="false"
+                data-error="Vous devez séléctionner une ville"
+                >
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -181,7 +204,11 @@
               </div>
 
               <div
-                class="formData">
+                id="validCheckBox"
+                class="formData"
+                data-error-visible="false"
+                data-error="Vous devez accepté les conditions d'utilisation pour continuer"
+                >
                 <input
                   class="checkbox-input"
                   type="checkbox"
