@@ -35,29 +35,12 @@ function  closeModal() {
 let x = document.forms["reserve"];
 
 //Fonction de validation du prénom de l'utilisateur
-function validateFirstname() {
-  if (x.first.value === "" || x.first.value.length < 2) {
-    //alert("Le prénom ne peut pas être vide");
-    document.getElementById('firstName').setAttribute("data-error-visible", "true")
-    return false
-  }
-  else {
-    document.getElementById('firstName').setAttribute("data-error-visible", "false")
-    return true
-  }
-}
-
-//Fonction de validation du nom de l'utilisateur
-function validateLastname() {
-  if (x.last.value === "" || x.last.value.length < 2) {
-    //alert("Le prénom ne peut pas être vide");
-    document.getElementById('lastName').setAttribute("data-error-visible", "true")
-    return false
-  }
-  else {
-    document.getElementById('lastName').setAttribute("data-error-visible", "false")
-    return true
-  }
+function validateInput(inputId, isValidId) {
+  const inputElement = document.getElementById(inputId);
+  const isValidElement = document.getElementById(isValidId);
+  let isValid = inputElement.value.length >= 2;
+  isValidElement.setAttribute("data-error-visible", String(!isValid));
+  return isValid;
 }
 
 //Function de validation du format de l'email de l'utilisateur
@@ -139,10 +122,10 @@ function validateCheckbox() {
 
 function validateForm() {
   //Validation du prénom
-  let firstnameIsValid = validateFirstname();
+  let firstnameIsValid = validateInput("first", "firstName");
 
   //validation du nom
-  let lastnameIsValid = validateLastname();
+  let lastnameIsValid = validateInput("last", "lastName");
 
   //Validation du mail
   let emailIsValid = validateEmail();
