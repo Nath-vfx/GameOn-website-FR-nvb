@@ -1,10 +1,6 @@
-function editNav() {
-  let x = document.querySelector("#myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
+function openMenu() {
+  let navigation = document.querySelector(".main-navbar");
+  navigation.classList.toggle("open");
 }
 
 // DOM Elements
