@@ -1,0 +1,9 @@
+# Apple macOS specific files
+.DS_store
+
+# Vscode specific files
+.vscode
+
+# IntelliJ specific files
+.idea
+
