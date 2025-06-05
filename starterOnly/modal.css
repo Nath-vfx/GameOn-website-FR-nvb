@@ -210,8 +210,9 @@ main {
   top: 0;
   width: 100%;
   height: 100vh;
+  min-height: max-content;
   overflow: auto;
-  background-color: rgba(26, 39, 156, 0.4);
+  background-color: white;
 }
 
 .content {
@@ -628,6 +629,9 @@ form[name="reserve"].inactive {
 }
 
 @media screen and (max-width: 768px) {
+  .bground {
+    padding-top: 6rem;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
