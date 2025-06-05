@@ -144,9 +144,7 @@ function validateForm() {
 
   // Vérifiez si toutes les fonctions renvoient true
   if (firstnameIsValid && lastnameIsValid && emailIsValid && birthdateIsValid && tournamentNumberIsValid && locationIsValid && checkboxIsValid) {
-    alert("Merci ! Votre inscription à bien été reçue !")
-    return true;
-  } else {
-    return false;
+    document.querySelector(".modal-confirm").classList.add("active");
+    document.querySelector("form[name='reserve']").classList.add("inactive");
   }
 }
