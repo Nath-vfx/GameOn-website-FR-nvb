@@ -1,17 +1,25 @@
-function openMenu() {
+function toggleMenu() {
+  // Ouverture et fermetur du menu
   let navigation = document.querySelector(".main-navbar");
   navigation.classList.toggle("open");
 }
 
+
+
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const modalCloseBtn = document.querySelector(".close")
+const modalCloseBtn = document.querySelectorAll(".close")
+const btnSubmit = document.querySelector('.btn-submit');
+const toggleMenuBtn = document.querySelector('.icon');
 //const formData = document.querySelectorAll(".formData");
+
+// Ecouteur pour ouvrir le menu
+toggleMenuBtn.addEventListener("click", toggleMenu);
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-modalCloseBtn.addEventListener("click", closeModal)
+modalCloseBtn.forEach((btn) => btn.addEventListener("click", closeModal));
 
 // launch modal form
 function launchModal() {
@@ -116,7 +124,9 @@ function validateCheckbox() {
   }
 }
 
-function validateForm() {
+function validateForm(event) {
+  event.preventDefault();
+
   //Validation du prénom
   let firstnameIsValid = validateInput("first", "firstName");
 
@@ -144,3 +154,6 @@ function validateForm() {
     document.querySelector("form[name='reserve']").classList.add("inactive");
   }
 }
+
+
+btnSubmit.addEventListener("click", validateForm);

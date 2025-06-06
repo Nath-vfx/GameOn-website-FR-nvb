@@ -16,7 +16,7 @@
     <div class="header-logo">
       <img alt="logo" src="Logo.png" width="250" height="45" />
     </div>
-    <button href="javascript:void(0);" class="icon" onclick="openMenu()">
+    <button href="javascript:void(0);" class="icon">
         <img src="./_Nav.svg" alt="menu"></i>
     </button>
     <div class="main-navbar">
@@ -24,7 +24,6 @@
       <a href="#"><span>À propos</span></a>
       <a href="#"><span>Contact</span></a>
       <a href="#"><span>Évènements passés</span></a>
-      
     </div>
   </div>
 
@@ -53,9 +52,9 @@
 
     <div class="bground">
       <div class="content">
-        <span class="close"></span>
+        <span class="close cross"></span>
         <div class="modal-body">
-          <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
+          <form name="reserve" action="index.html" method="get">
             <div id="firstName" class="formData" data-error-visible="false"
               data-error="Veuillez entrer 2 caractères ou plus pour le champ du prénom.">
               <label for="first">Prénom</label><br>
@@ -124,12 +123,12 @@
               </label>
               <br>
             </div>
-            <button class="btn-submit" onclick="event.preventDefault(); validateForm();">C'est parti !</button>
+            <button class="btn-submit">C'est parti !</button>
           </form>
           <div class="modal-confirm">
             <div class="modal-confirm-content">
               <h2 class="modal-confirm-title">Merci pour votre inscription</h2>
-              <button class="btn-close" onclick="closeModal()">Fermer</button>
+              <button class="btn-close close">Fermer</button>
             </div>
           </div>
         </div>
