@@ -66,7 +66,7 @@ img {
   border-radius: 15px;
 }
 
-.topnav a:hover:not(:last-child) {
+.topnav a:hover {
   background-color: #ff0000;
   color: #ffffff;
 }
@@ -95,6 +95,11 @@ img {
 }
 
 @media screen and (max-width: 425px) {
+
+  .btn-close {
+  padding: 0.5rem 3rem;
+  }
+
   .topnav {
     z-index: 1003;
   }
@@ -284,7 +289,7 @@ input {
   margin-top: 7px;
   margin-bottom: 7px;
   text-align: left;
-  line-height: 0.3;
+  line-height: 1;
   opacity: 0;
   transition: 0.3s;
 }
@@ -415,6 +420,10 @@ input[data-error]::after {
   color: #fff;
   cursor: pointer;
   border: 0;
+}
+
+.btn-close {
+  padding: 0.75rem 4rem;
 }
 
 .btn-signup {
