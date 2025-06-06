@@ -94,6 +94,12 @@ img {
   display: none;
 }
 
+@media screen and (max-width: 425px) {
+  .topnav {
+    z-index: 1003;
+  }
+}
+
 
 @media screen and (max-width: 768px) {
   .topnav .icon {
